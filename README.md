@@ -4,10 +4,10 @@
 
 This repository collects and organizes useful bits for mainly research purposes including speech analysis, machine learning, coding etc.
 
-## Praat
+### [Praat]:
 
-## Python
+### Python
 
-## Matlab
+### Matlab
 
-## Tensorflow
+### Tensorflow
