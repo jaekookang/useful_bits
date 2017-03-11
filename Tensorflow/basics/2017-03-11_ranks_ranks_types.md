@@ -15,7 +15,7 @@ T is a **2**-dimensional **Tensor**.
 **n-dimension** is a basic unit for **Tensor**.  
 **n-dimension** is also called a **rank 'n'**.  
 So, **2-dimensional Tensor** T is also called a **rank 2 Tensor (or 2-Tensor)**.  
-**Dimension** is equalt to **Rank**  
+**Dimension** and **Rank** are the same term.  
 
 >1-Tensor: e.g. vector, [1,2,3]  
 >2-Tensor: e.g. matrix, [[1,2],[3,4]]  
