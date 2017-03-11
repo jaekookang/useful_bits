@@ -12,5 +12,7 @@ with tf.Session() as sess:
     x, y = sess.run([x, y])
     print('\nx:%s\ny:%s' % (x, y))
 
+writer.close()
+
 # Run tensorboard
 # >> tensorboard --logdir='./graph' --port 6006
