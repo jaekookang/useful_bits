@@ -9,7 +9,7 @@ T = [[1, 2, 3], [4, 5, 6], [7, 8, 9], [10, 11, 12]]
 
 T is a **Tensor**.  
 T is a **2**-dimensional **Tensor**.  
->Why 2-dimensional? Simply count the number of brackets from left or right. There are two '[' (or two ']') for T.   
+>Why 2-dimensional? Simply count the number of brackets either from left or right. There are two '[' (or two ']') for T.   
 >Think about it as a depth (=dimension) of a Tensor.
 
 **n-dimension** is a basic unit for **Tensor**.  
