@@ -23,7 +23,9 @@ So, **2-dimensional Tensor** T is also called a **rank 2 Tensor (or 2-Tensor)**.
 >n-Tensor: ...  
 
 T has a **shape**=(2, 3).  
->Why (2, 3)? Count number of elements in the smallest bracket and so one, and write the numbers from right to left. That's it!
+>Why (2, 3)? Count number of elements in the smallest bracket and so one, and write the numbers from right to left. That's it! 
+
+Make sure that in **shape**=(2, 3), 0-dimension means '2' and 1-dimension means '3'. Although T is 2-dimensional Tensor, each element cannot be equal or exceed 2 dimension. Remember that 2-dimensional Tensor can only have lesser dimensions (n-1) as elements.
 
 For example,  
 A = [[1,2,3],[4,5,6]]  
