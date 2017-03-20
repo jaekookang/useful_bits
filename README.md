@@ -3,7 +3,7 @@
 
 "What I cannot create, I do not understand", Feynman (1988) 
 
-This repository includes useful bits of information (e.g. code, tutorial, etc.) regarding speech analysis, machine learning, Pythong, TensorFlow, Praat, Matlab and so on.
+This repository includes useful bits of information (e.g. code, tutorial, etc.) regarding speech analysis, machine learning, Python, TensorFlow, Praat, Matlab and so on.
 
 
 #### [Praat](https://github.com/jaekookang/useful_bits/tree/master/Praat)
