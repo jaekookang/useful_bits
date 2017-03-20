@@ -26,7 +26,7 @@ max_iter = 20
 n_input_dim = 1
 n_input_len = len(sin_in)
 n_output_len = len(sin_out)
-n_hidden = 10
+n_hidden = 50
 n_output_dim = 1
 
 # TensorFlow graph
@@ -51,9 +51,9 @@ def RNN(inputs, weights, biases):
     inputs = tf.reshape(inputs, [-1, n_input_dim])
     # Split to get a list of time_step tensors of shape (batch_size, input_dimension)
     # final 'inputs' is a list of n_input_len elements (=number of frames)
-    inputs = tf.split(value=inputs, num_split=n_input_len, split_dim=0)
+    inputs = tf.split(value=inputs, num_or_size_splits=n_input_len, axis=0)
 
-    lstm = tf.nn.rnn_cell.BasicLSTMCell(n_hidden, forget_bias=1.0)
+    lstm = tf.contrib.rnn.BasicLSTMCell(n_hidden, forget_bias=1.0)
     outputs, states = tf.nn.dynamic_rnn(lstm, x, dtype=tf.float32)
     return tf.matmul(outputs[-1], weights['out']) + biases['out']
 
@@ -81,3 +81,4 @@ f, axes = plt.subplots(2, sharey=True)
 axes[0].plot(t[:-1], sin_out)
 axes[1].plot(t[:-1], pred_out)
 plt.show()
+

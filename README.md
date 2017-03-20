@@ -3,7 +3,8 @@
 
 "What I cannot create, I do not understand", Feynman (1988) 
 
-This repository collects and organizes useful bits of information mainly for research purposes including speech analysis, machine learning, Python, tensorflow, Praat, Matlab, Unix etc.
+This repository includes useful bits of information (e.g. code, tutorial, etc.) regarding speech analysis, machine learning, Pythong, TensorFlow, Praat, Matlab and so on.
+
 
 #### [Praat](https://github.com/jaekookang/useful_bits/tree/master/Praat)
 
