@@ -1,8 +1,8 @@
 # Simple RNN-LSTM regression
 # 2017-03-16 jkang
 #
-# input: multiple sinewaves (varying frequency, amplitude and duration)
-# output: one-sample shifted input
+# input: sinewaves (varying frequency, amplitude and duration)
+# output: one-sample shifted inputs
 #
 # no batch mode (online training)
 
@@ -12,7 +12,7 @@ import matplotlib.pyplot as plt
 
 # Input, Ouput dataset
 n_examples = 100
-srate = 100  # Hz
+srate = 200  # Hz
 sin_in = {}
 sin_out = {}
 for i in range(n_examples):
@@ -26,8 +26,8 @@ for i in range(n_examples):
     sin_out[key] = sin[1:]  # one sample shifting
 
 # Hyper-Parameters
-learning_rate = 0.01
-max_iter = 2
+learning_rate = 0.001
+max_iter = 20
 
 # Network Parameters
 n_input_dim = 1
@@ -58,9 +58,10 @@ def RNN(inputs, weights, biases):
     inputs = tf.reshape(inputs, [-1, n_input_dim])
     # Split to get a list of time_step tensors of shape (batch_size, input_dimension)
     # final 'inputs' is a list of n_input_len elements (=number of frames)
-    inputs = tf.split(value=inputs, num_split=n_input_len, split_dim=0)
+    inputs = tf.split(
+        value=inputs, num_or_size_splits=n_input_len, axis=0)
 
-    lstm = tf.nn.rnn_cell.BasicLSTMCell(n_hidden, forget_bias=1.0)
+    lstm = tf.contrib.rnn.BasicLSTMCell(n_hidden, forget_bias=1.0)
     outputs, states = tf.nn.dynamic_rnn(lstm, x, dtype=tf.float32)
     return tf.matmul(outputs[-1], weights['out']) + biases['out']
 
@@ -68,7 +69,7 @@ pred = RNN(x, weights, biases)
 cost = tf.reduce_mean(tf.squared_difference(pred, y))
 optimizer = tf.train.AdamOptimizer(learning_rate=learning_rate).minimize(cost)
 
-# Training
+
 init = tf.global_variables_initializer()
 with tf.Session() as sess:
     sess.run(init)
@@ -89,6 +90,7 @@ with tf.Session() as sess:
               'Cost = ', '{:.5f}'.format(mean_mse))
         step += 1
 
+
 # Test
 with tf.Session() as sess:
     sess.run(init)
@@ -99,5 +101,6 @@ with tf.Session() as sess:
         f, axes = plt.subplots(2, sharey=True)
         axes[0].plot(sin_out[idx])
         axes[1].plot(pred_out)
-        f.savefig(idx + '.png')
-        # plt.show()
+        plt.show()
+        #f.savefig('result_' + idx + '.png')
+
