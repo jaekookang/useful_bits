@@ -6,10 +6,9 @@
 This repository includes useful bits of information (e.g. code, tutorial, etc.) regarding speech analysis, machine learning, Python, TensorFlow, Praat, Matlab and so on.
 
 
-#### [Praat](https://github.com/jaekookang/useful_bits/tree/master/Praat)
+#### [Machine Learning](https://github.com/jaekookang/useful_bits/tree/master/Machine_Learning)
 
-#### [Python](https://github.com/jaekookang/useful_bits/tree/master/Python)
+#### [Programming](https://github.com/jaekookang/useful_bits/tree/master/Programming)
 
-#### [Matlab](https://github.com/jaekookang/useful_bits/tree/master/Matlab)
+#### [Speech_Analysis](https://github.com/jaekookang/useful_bits/tree/master/Speech_Analysis/Praat)
 
-#### [Tensorflow](https://github.com/jaekookang/useful_bits/tree/master/Tensorflow)
