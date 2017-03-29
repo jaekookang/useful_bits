@@ -1,4 +1,4 @@
-# Essential Jupyter shortcuts for Mac
+# Jupyter shortcuts for Mac
 
 
 Keys | Purpose  
