@@ -1,5 +1,7 @@
 # Simple RNN-LSTM regression
 # 2017-03-16 jkang
+# Python3.5
+# Tensorflow1.0.1
 #
 # input: sinewaves (varying frequency, amplitude and duration)
 # output: one-sample shifted inputs
@@ -9,6 +11,7 @@
 import tensorflow as tf
 import numpy as np
 import matplotlib.pyplot as plt
+
 
 # Input, Ouput dataset
 n_examples = 100

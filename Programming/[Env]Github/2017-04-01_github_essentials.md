@@ -4,7 +4,7 @@
 
 This tutorial assumes you had ```dev``` branch on which your major works are done, and you want to merge ```dev``` to ```master``` branch  
 
-Make sure set up an editor on Terminal as your preference. I prefer to work on emacs, but Github uses vim as defaul editor, so change the default editor use the following command:  
+Make sure set up an editor on Terminal as your preference. I prefer to working on Emacs, but Github uses vim as defaul editor, so change the default editor use the following command:  
 ```>> git config --global core.editor "emacs"```  
 For Sublime, use  
 ```>> git config --global core.editor "subl"```  

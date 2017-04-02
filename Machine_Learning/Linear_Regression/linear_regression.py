@@ -1,6 +1,11 @@
-# 2017-03-11 jkang
 # simple linear regression
+# 2017-03-11 jkang
+# Python3.5
+# Tensorflow1.0.1
 # ref: http://web.stanford.edu/class/cs20si/
+#
+# input: number of fire
+# output: number of theft
 
 import numpy as np
 import matplotlib.pyplot as plt
@@ -20,8 +25,7 @@ Y = tf.placeholder(tf.float64, shape=(), name='NumTheft')
 w = tf.Variable(np.zeros(1), name='Weight')
 b = tf.Variable(np.zeros(1), name='Bias')
 
-Y_predict = tf.add(tf.mul(X, w), b)
-
+Y_predict = tf.add(tf.multiply(X, w), b)
 
 def huber_loss(labels, predictions, delta=1.0):
     # Huber loss (outlier robust)
@@ -30,8 +34,7 @@ def huber_loss(labels, predictions, delta=1.0):
     condition = tf.less(residual, delta)
     small_res = 0.5 * tf.square(residual)
     large_res = delta * residual - 0.5 * tf.square(delta)
-    print(large_res)
-    return tf.select(condition, small_res, large_res)
+    return tf.where(condition, small_res, large_res)
 loss = huber_loss(Y, Y_predict, delta=1.0)
 
 # loss = tf.square(tf.sub(Y, Y_predict), name='loss')
@@ -61,3 +64,4 @@ plt.plot(X, Y, 'bo', label='Real data')
 plt.plot(X, X * w_value + b_value, 'r', label='Predicted data')
 plt.legend()
 plt.show()
+
