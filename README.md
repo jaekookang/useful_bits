@@ -21,4 +21,4 @@ This repository aims to collect useful bits of information/building blocks (e.g.
 
 
 #### [Speech_Analysis](https://github.com/jaekookang/useful_bits/tree/master/Speech_Analysis/Praat)
-* [Praat](https://github.com/jaekookang/useful_bits/tree/master/Speech_Analysis): Useful Praat scripts for speech analysis
+* [Praat](https://github.com/jaekookang/useful_bits/tree/master/Speech_Analysis/Praat): Useful Praat scripts for speech analysis

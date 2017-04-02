@@ -15,7 +15,7 @@ First, find your matlab root directory and type as follows in Terminal:
 
 ```matlabroot``` is your matlab root directory  
 For example, in my case  
-```>> cd /Applications/MATLAB_R2016b.app/extern/engines/python```
+```>> cd /Applications/MATLAB_R2016b.app/extern/engines/python```  
 ```>> python setup.py install```
 
 Second, after installing Matlab API engine for Python, download _matlab\_kernel_ from pip  
