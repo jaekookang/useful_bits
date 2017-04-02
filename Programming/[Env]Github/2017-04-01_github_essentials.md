@@ -15,4 +15,4 @@ This tutorial assumes you had ```dev``` branch on which your major works are don
 Make sure you are pointing to ```master``` first  
 ```>> git checkout master```  
 ```>> git merge --no-ff dev```
-
+```>> git```
