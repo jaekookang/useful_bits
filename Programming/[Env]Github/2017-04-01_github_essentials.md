@@ -2,7 +2,8 @@
 \# 2017-04-01 written by jkang  
 \# ref: <http://nvie.com/posts/a-successful-git-branching-model/>  
 
-This tutorial assumes you had ```dev``` branch on which your major works are done, and you want to merge ```dev``` to ```master``` branch  
+* This tutorial assumes you had ```dev``` branch on which your major works are done, and you want to merge ```dev``` to ```master``` branch  
+* This tutorial is mainly for personal code management, but can be applied to projects by multiple users
 
 Make sure set up an editor on Terminal as your preference. I prefer to working on Emacs, but Github uses vim as defaul editor, so change the default editor use the following command:  
 ```>> git config --global core.editor "emacs"```  
