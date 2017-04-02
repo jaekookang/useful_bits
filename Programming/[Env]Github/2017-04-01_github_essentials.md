@@ -21,4 +21,6 @@ For Sublime, use
 Make sure you are pointing to ```master``` first  
 ```>> git checkout master```  
 ```>> git merge --no-ff dev```  
-```>> git ```
+When the text editor appears, add comments about the changes and then save it  
+```>> git push origin master```  # finally update the changes to ```master```  
+```>> git checkout dev```  # make sure you change back to ```dev``` branch!!   
