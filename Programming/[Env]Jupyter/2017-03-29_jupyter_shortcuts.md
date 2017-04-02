@@ -1,8 +1,8 @@
-# Essential Jupyter shortcuts for Mac
+# Jupyter shortcuts for Mac
 
 
 Keys | Purpose  
---- | --- | ---
+--- | ---
 CTRL + Enter | Run the current cell
 ALT + Enter | Run the current cell and Add a new cell below
 CTRL + / | Comment/Uncomment (for the selected area)
