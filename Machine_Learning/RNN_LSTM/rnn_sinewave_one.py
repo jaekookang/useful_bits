@@ -1,5 +1,7 @@
 # Simple RNN-LSTM regression
 # 2017-03-16 jkang
+# Python3.5
+# Tensorflow1.0.1
 #
 # input: one sinewave
 # output: one sinewave (one sample shifted)
@@ -7,6 +9,7 @@
 import tensorflow as tf
 import numpy as np
 import matplotlib.pyplot as plt
+
 
 # Input, Ouput dataset
 duration = 10  # sec
@@ -60,6 +63,7 @@ def RNN(inputs, weights, biases):
 pred = RNN(x, weights, biases)
 cost = tf.reduce_mean(tf.squared_difference(pred, y))
 optimizer = tf.train.AdamOptimizer(learning_rate=learning_rate).minimize(cost)
+
 
 init = tf.global_variables_initializer()
 with tf.Session() as sess:

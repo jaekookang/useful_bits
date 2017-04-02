@@ -1,6 +1,6 @@
-# coding: utf-8
-
 # softmax function
+# 2017-03-30 jkang
+# ref: Machine Learning by Andrew Ng on Corsera
 import numpy as np
 
 '''

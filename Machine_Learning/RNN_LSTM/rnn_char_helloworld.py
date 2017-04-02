@@ -1,7 +1,5 @@
-# coding: utf-8
-
 # Simple character-level prediction using RNN
-# 2017-03-30
+# 2017-03-30 jkang
 # 
 # 'hello_world'
 #

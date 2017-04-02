@@ -1,5 +1,7 @@
 # 2017-03-11 jkang
 # simple logistic regression
+# Python3.5
+# Tensorflow1.0.1
 # ref:
 # - http://web.stanford.edu/class/cs20si/
 # - iris dataset from Matlab Neural Network example
@@ -12,9 +14,10 @@ import scipy.io as sio
 import numpy as np
 import matplotlib.pyplot as plt
 
+
 learning_Rate = 0.01
 batch_size = 10
-max_epochs = 10
+max_epochs = 30
 
 irisInputs_tmp = sio.loadmat('irisInputs.mat')
 irisInputs = irisInputs_tmp['irisInputs'].T
@@ -29,15 +32,14 @@ b = tf.Variable(np.zeros((1, 3)), name='bias', dtype=np.float32)
 
 logits = tf.matmul(X, w) + b
 
-entropy = tf.nn.softmax_cross_entropy_with_logits(logits, Y)
+entropy = tf.nn.softmax_cross_entropy_with_logits(logits=logits, labels=Y)
 loss = tf.reduce_mean(entropy)
-
 optimizer = tf.train.GradientDescentOptimizer(learning_Rate).minimize(loss)
-
 
 def softmax(x):
     ex_val = np.exp(x - np.max(x))
     return ex_val / ex_val.sum()
+
 
 with tf.Session() as sess:
     # training
@@ -60,6 +62,7 @@ with tf.Session() as sess:
     weights, bias = sess.run([w, b])
     writer.close()
 
+
 # testing
 rand_idx = np.random.permutation(irisInputs.shape[0])[0]
 x_data = irisInputs[rand_idx]
@@ -67,3 +70,4 @@ y_data = irisTargets[rand_idx]
 pred = softmax(np.dot(x_data, weights) + bias)
 print('Y:', y_data)
 print('pred:', np.argmax(pred) + 1, 'th element')
+
