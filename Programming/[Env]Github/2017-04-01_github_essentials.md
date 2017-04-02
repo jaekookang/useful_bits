@@ -14,5 +14,5 @@ This tutorial assumes you had ```dev``` branch on which your major works are don
 ### (2) To merge ```dev``` to ```master```, type in Terminal as:  
 Make sure you are pointing to ```master``` first  
 ```>> git checkout master```  
-```>> git merge --no-ff dev```
-```>> git```
+```>> git merge --no-ff dev```  
+```>> git ```
