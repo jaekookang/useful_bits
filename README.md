@@ -16,9 +16,9 @@ This repository aims to collect useful bits of information/building blocks (e.g.
 * [\[Env\]Github](https://github.com/jaekookang/useful_bits/tree/master/Programming/%5BEnv%5DGithub): Useful commands and notes for Github
 * [\[Env\]Jupyter](https://github.com/jaekookang/useful_bits/tree/master/Programming/%5BEnv%5DJupyter): Useful options and settings for Jupyter environment
 * [\[Lang\]Matlab](https://github.com/jaekookang/useful_bits/tree/master/Programming/%5BLang%5DMatlab): Matlab code for essential operations (_uploading_)
-* [\[Lang\]Python](http://localhost:8888/tree/GoogleDrive/GitHub/useful_bits/Programming/%5BLang%5DPython): Python code and tutorial; tips and essential code
-* [\[ML\]Tensorflow](http://localhost:8888/tree/GoogleDrive/GitHub/useful_bits/Programming/%5BML%5DTensorflow): Tips and notes for machine learning implementation using Tensorflow
+* [\[Lang\]Python](https://github.com/jaekookang/useful_bits/tree/master/Programming/%5BLang%5DPython): Python code and tutorial; tips and essential code
+* [\[ML\]Tensorflow](https://github.com/jaekookang/useful_bits/tree/master/Programming/%5BML%5DTensorflow): Tips and notes for machine learning implementation using Tensorflow
 
 
 #### [Speech_Analysis](https://github.com/jaekookang/useful_bits/tree/master/Speech_Analysis/Praat)
-* [Praat](https://github.com/jaekookang/useful_bits/tree/master/Speech_Analysis): Useful Praat scripts for speech analysis
+* [Praat](https://github.com/jaekookang/useful_bits/tree/master/Speech_Analysis/Praat): Useful Praat scripts for speech analysis
