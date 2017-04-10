@@ -20,5 +20,5 @@ This repository aims to collect useful bits of information/building blocks (e.g.
 * [\[ML\]Tensorflow](https://github.com/jaekookang/useful_bits/tree/master/Programming/%5BML%5DTensorflow): Tips and notes for machine learning implementation using Tensorflow
 
 
-#### [Speech_Analysis](https://github.com/jaekookang/useful_bits/tree/master/Speech_Analysis/Praat)
+#### [Speech](https://github.com/jaekookang/useful_bits/tree/master/Speech_Analysis)
 * [Praat](https://github.com/jaekookang/useful_bits/tree/master/Speech_Analysis/Praat): Useful Praat scripts for speech analysis

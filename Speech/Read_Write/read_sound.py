@@ -9,7 +9,7 @@ from pylab import*
 from scipy.io import wavfile
 import matplotlib.pyplot as plt
 
-srate, sig = wavfile.read('read_sound_example.wav')
+srate, sig = wavfile.read('da_ta.wav')
 duration = len(sig)/srate
 
 print('srate(Hz):', srate)

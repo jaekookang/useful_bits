@@ -1,6 +1,7 @@
 % batch gradient descent example 
 % in univariate linear regression
 % 2017-03-24 jkang
+% Matlab R2016b
 %
 % y = th0 + th1*x
 
