@@ -6,7 +6,8 @@
 # input:  'hello_worl'
 # output: 'ello_world'
 # 
-# TensorFlow 1.0.1
+# Python3.5
+# Tensorflow1.0.1
 # ref: https://hunkim.github.io/ml/
 
 import tensorflow as tf
