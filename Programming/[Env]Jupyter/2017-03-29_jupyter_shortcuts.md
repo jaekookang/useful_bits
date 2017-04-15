@@ -1,5 +1,5 @@
 # Jupyter shortcuts for Mac
-
+---
 
 Keys | Purpose  
 --- | ---

@@ -1,11 +1,12 @@
 # Jupyter for Matlab
-\# 2017-04-02 jkang  
-\# ref:  
-\# - [Matlab kernel](https://github.com/Calysto/matlab_kernel)  
-\# - [Matlab API](https://www.mathworks.com/help/matlab/matlab_external/install-the-matlab-engine-for-python.html)
+2017-04-02 jkang  
+ref:  
+- [Matlab kernel](https://github.com/Calysto/matlab_kernel)  
+- [Matlab API](https://www.mathworks.com/help/matlab/matlab_external/install-the-matlab-engine-for-python.html)
 
+---
 
-Matlab code can be visualized and represented using Jupyter  
+Matlab code can be visualized and presented using Jupyter  
 
 Here is how  
 

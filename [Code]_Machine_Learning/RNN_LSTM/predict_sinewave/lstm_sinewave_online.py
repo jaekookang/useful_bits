@@ -12,7 +12,6 @@ import tensorflow as tf
 import numpy as np
 import matplotlib.pyplot as plt
 
-
 # Input, Ouput dataset
 n_examples = 100
 srate = 200  # Hz
@@ -52,7 +51,6 @@ weights = {
 biases = {
     'out': tf.Variable(tf.random_normal([n_output_dim]))
 }
-
 
 def RNN(inputs, weights, biases):
     # Reshape to (time_step) x (batch_size) x (input_dimension)

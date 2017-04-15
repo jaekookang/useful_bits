@@ -1,10 +1,10 @@
 # Simple character-level prediction using RNN
 # 2017-03-30 jkang
 # 
-# 'hello_world'
+# 'hello_world_good_morning_see_you_hello_great'
 #
-# input:  'hello_worl'
-# output: 'ello_world'
+# input:  'ello_world_good_morning_see_you_hello_great'
+# output: 'hello_world_good_morning_see_you_hello_grea'
 # 
 # Python3.5
 # Tensorflow1.0.1
@@ -14,17 +14,18 @@ import tensorflow as tf
 import numpy as np
 
 # Make input data
-char_list = ['h','e','l','o','_','w','r','d']
+char_raw = 'hello_world_good_morning_see_you_hello_great'
+char_list = list(set(char_raw))
 char_idx = {c: i for i, c in enumerate(char_list)} # character with index
-char_data = [char_idx[c] for c in 'hello_world']
+char_data = [char_idx[c] for c in char_raw]
 char_data_onehot = tf.one_hot(char_data, 
                               depth=len(char_list), 
                               on_value=1., 
                               off_value=0.,
                               axis=1, 
                               dtype=tf.float32)
-char_input = char_data_onehot[:-1] # 'hello_worl'
-char_output = char_data_onehot[1:] # 'ello_world'
+char_input = char_data_onehot[:-1] # 'ello_world_good_morning_see_you_hello_great'
+char_output = char_data_onehot[1:] # 'hello_world_good_morning_see_you_hello_grea'
 print('char_data:', char_data)
 print('char_data_onehot:', char_data_onehot.shape)
 print('char_input:', char_input.shape)
@@ -33,8 +34,9 @@ print('char_output:', char_output.shape)
 # Set configurations
 n_char = len(char_list)
 rnn_size = n_char # number of one-hot coding vectors == output size for each cell
-n_timestep = 10 # 'hello_worl' --> 'ello_world' (prediction)
+n_timestep = char_input.shape.as_list()[0] # length of the input
 batch_size = 1  # one example
+max_iter = 300
 
 # Set RNN
 rnn_cell = tf.contrib.rnn.BasicRNNCell(rnn_size)
@@ -57,8 +59,9 @@ train_op = tf.train.RMSPropOptimizer(learning_rate = 0.01, decay = 0.9).minimize
 # Launch the graph in a session
 with tf.Session() as sess:
     tf.global_variables_initializer().run()
-    for i in range(200):
+    for i in range(max_iter):
         _, c = sess.run([train_op, cost])
         result = sess.run(tf.arg_max(logits, 2))
-        print('Epoch:', i+1, 'cost:', c, 'raw:', result, '\npredict:',''.join([char_list[t] for t in result[0]]))
+        print('Epoch: {:>4}'.format(i + 1), '/', str(max_iter),
+              'Cost: {:4f}'.format(c), 'Predict:', ''.join([char_list[t] for t in result[0]]))
 

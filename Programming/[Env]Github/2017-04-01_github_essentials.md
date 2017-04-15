@@ -1,6 +1,8 @@
 # Github Essentials  
-\# 2017-04-01 written by jkang  
-\# ref: <http://nvie.com/posts/a-successful-git-branching-model/>  
+2017-04-01 written by jkang  
+ref: <http://nvie.com/posts/a-successful-git-branching-model/>  
+
+---
 
 * This tutorial assumes you had ```dev``` branch on which your major works are done, and you want to merge ```dev``` to ```master``` branch  
 * This tutorial is mainly for personal code management, but can be applied to projects by multiple users
