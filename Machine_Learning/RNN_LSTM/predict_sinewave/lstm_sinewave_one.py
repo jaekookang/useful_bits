@@ -4,7 +4,7 @@
 # Tensorflow1.0.1
 #
 # input: one sinewave
-# output: one sinewave (one sample shifted)
+# output: one sinewave
 
 import tensorflow as tf
 import numpy as np
@@ -12,7 +12,7 @@ import matplotlib.pyplot as plt
 
 # Input, Ouput dataset
 duration = 10  # sec
-srate = 100  # Hz
+srate = 10  # Hz
 freq = .5  # Hz
 amplitude = np.random.random(1) * 10
 t = np.linspace(0, duration, duration * srate + 1)
@@ -46,25 +46,14 @@ biases = {
     'out': tf.Variable(tf.random_normal([n_output_dim]))
 }
 
-def RNN(inputs, weights, biases):
-    # Reshape to (time_step) x (batch_size) x (input_dimension)
-    inputs = tf.transpose(inputs, [1, 0, 2])
-    # Reshape to (time_step)*(batch_size) x (input_dimension)
-    inputs = tf.reshape(inputs, [-1, n_input_dim])
-    # Split to get a list of time_step tensors of shape (batch_size, input_dimension)
-    # final 'inputs' is a list of n_input_len elements (=number of frames)
-    inputs = tf.split(value=inputs, num_or_size_splits=n_input_len, axis=0)
-
+def RNN(x, weights, biases):
     lstm = tf.contrib.rnn.BasicLSTMCell(n_hidden, forget_bias=1.0)
     outputs, states = tf.nn.dynamic_rnn(lstm, x, dtype=tf.float32)
-#     rnn = tf.contrib.rnn.BasicRNNCell(n_hidden)    
-#     outputs, states = tf.nn.dynamic_rnn(rnn, x, dtype=tf.float32)
     return tf.matmul(outputs[-1], weights['out']) + biases['out']
 
 pred = RNN(x, weights, biases)
 cost = tf.reduce_mean(tf.squared_difference(pred, y))
 optimizer = tf.train.AdamOptimizer(learning_rate=learning_rate).minimize(cost)
-
 
 init = tf.global_variables_initializer()
 with tf.Session() as sess:
@@ -83,7 +72,12 @@ with tf.Session() as sess:
 
 # Plot
 f, axes = plt.subplots(2, sharey=True)
-axes[0].plot(t[:-shift], sin_out)
-axes[1].plot(t[:-shift], pred_out)
+axes[0].plot(t[:-shift], sin_out, 'o')
+axes[1].plot(t[:-shift], pred_out, 'o')
 plt.show()
 
+
+# ### Further thoughts
+# 
+# * For future, the proper number of shifting should be decided. Here, I tried to shift samples to make the output to be orthogonal to the input in correlation. 
+# * Windowing might be needed to learn more local shapes

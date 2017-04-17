@@ -12,30 +12,33 @@ import tensorflow as tf
 import numpy as np
 import matplotlib.pyplot as plt
 
+
 # Input, Ouput dataset
 n_examples = 100
-srate = 200  # Hz
+srate = 10  # Hz
 sin_in = {}
 sin_out = {}
 for i in range(n_examples):
-    freq = np.random.random(1) * 10 + 1  # 1 <= freq < 11 Hz
+    freq = np.random.random(1)/15 + 0.5  # 1 <= freq < 11 Hz
     amplitude = np.random.random(1) * 10
     duration = np.random.random(1) * 5 + 5  # sample from 5 ~ 10 sec
     t = np.linspace(0, duration, duration * srate + 1)
     sin = np.sin(2 * np.pi * freq * t) * amplitude
     key = 's' + str(i + 1)
-    sin_in[key] = sin[:-1]
-    sin_out[key] = sin[1:]  # one sample shifting
+    shift = int(srate/freq*1/4)
+    sin_in[key] = sin[:-shift]
+    sin_out[key] = sin[shift:]  # shifting
+
 
 # Hyper-Parameters
 learning_rate = 0.001
-max_iter = 20
+max_iter = 100
 
 # Network Parameters
 n_input_dim = 1
 n_input_len = len(sin_in)
 n_output_len = len(sin_out)
-n_hidden = 100
+n_hidden = 200
 n_output_dim = 1
 
 # TensorFlow graph
@@ -51,6 +54,7 @@ weights = {
 biases = {
     'out': tf.Variable(tf.random_normal([n_output_dim]))
 }
+
 
 def RNN(inputs, weights, biases):
     # Reshape to (time_step) x (batch_size) x (input_dimension)
@@ -100,8 +104,17 @@ with tf.Session() as sess:
         test_x = sin_in[idx].reshape((1, len(sin_in[idx]), n_input_dim))
         pred_out = sess.run(pred, feed_dict={x: test_x})
         f, axes = plt.subplots(2, sharey=True)
-        axes[0].plot(sin_out[idx])
-        axes[1].plot(pred_out)
+        axes[0].plot(sin_out[idx],'o')
+        axes[1].plot(pred_out,'o')
         plt.show()
         #f.savefig('result_' + idx + '.png')
 
+
+# ### Result  
+# 
+# When the model (RNN-LSTM) has to learn sinewaves varying in frequency, amplitude and duration, it doesn't correctly learn the input in the end.  
+#   
+# Possible conjectures:  
+# * Input patterns (i.e. frequency and amplitude) are so varaible that the model only tries to generalize the entire input patterns.
+# * Input data should be checked whether different patterns are balanced for training
+# * Time window for input might be needed to learn local shapes better
