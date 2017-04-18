@@ -61,16 +61,7 @@ biases = {
 }
 
 # RNN-LSTM cell
-def RNN(inputs, weights, biases):
-    # Reshape to (time_step) x (batch_size) x (input_dimension)
-    inputs = tf.transpose(inputs, [1, 0, 2])
-    # Reshape to (time_step)*(batch_size) x (input_dimension)
-    inputs = tf.reshape(inputs, [-1, n_input_dim])
-    # Split to get a list of time_step tensors of shape (batch_size, input_dimension)
-    # final 'inputs' is a list of n_input_len elements
-    # (=number of frames)
-    inputs = tf.split(value=inputs, num_or_size_splits=n_input_len, axis=0)
-
+def RNN(x, weights, biases):
     lstm = tf.contrib.rnn.BasicLSTMCell(n_hidden, forget_bias=1.0)
     outputs, states = tf.nn.dynamic_rnn(lstm, x, dtype=tf.float32)
     return tf.matmul(outputs[-1], weights['out']) + biases['out']

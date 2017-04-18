@@ -25,8 +25,9 @@ for i in range(n_examples):
     t = np.linspace(0, duration, duration * srate + 1)
     sin = np.sin(2 * np.pi * freq * t) * amplitude
     key = 's' + str(i + 1)
-    sin_in[key] = sin[:-1]
-    sin_out[key] = sin[1:]  # one sample shifting
+    shift = int(srate/freq*1/4)
+    sin_in[key] = sin[:-shift]
+    sin_out[key] = sin[shift:]  # one sample shifting
 
 
 # Hyper-Parameters
