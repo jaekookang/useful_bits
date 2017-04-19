@@ -31,6 +31,9 @@ print('char_data_onehot:', char_data_onehot.shape)
 print('char_input:', char_input.shape)
 print('char_output:', char_output.shape)
 
+
+# In[3]:
+
 # Set configurations
 n_char = len(char_list)
 rnn_size = n_char # number of one-hot coding vectors == output size for each cell
@@ -43,6 +46,7 @@ rnn_cell = tf.contrib.rnn.BasicRNNCell(rnn_size)
 init_state = tf.zeros([batch_size, rnn_cell.state_size])
 input_split = tf.split(value=char_input, num_or_size_splits=n_timestep, axis=0)
 outputs, state = tf.contrib.rnn.static_rnn(rnn_cell, input_split, init_state)
+
 
 # logits: A 3D Tensor of shape [batch_size x sequence_length x num_decoder_symbols] and dtype float. 
 # targets: A 2D Tensor of shape [batch_size x sequence_length] and dtype int.

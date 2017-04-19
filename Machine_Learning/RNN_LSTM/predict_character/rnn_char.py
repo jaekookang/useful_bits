@@ -20,6 +20,7 @@
 
 import tensorflow as tf
 import numpy as np
+import matplotlib.pyplot as plt
 
 # Input/Ouput data
 char_raw = 'hello_world_good_morning_see_you_hello_great'
@@ -35,6 +36,7 @@ with tf.Session() as sess:
     char_input = char_input.eval()
     char_output = char_output.eval()
 
+
 # Learning parameters
 learning_rate = 0.001
 max_iter = 200
@@ -48,43 +50,79 @@ n_hidden = 100
 
 # TensorFlow graph
 # (batch_size) x (time_step) x (input_dimension)
-x = tf.placeholder(tf.float32, [1, None, n_input_dim])
+x_data = tf.placeholder(tf.float32, [1, None, n_input_dim])
 # (batch_size) x (time_step) x (output_dimension)
-y = tf.placeholder(tf.float32, [1, None, n_output_dim])
+y_data = tf.placeholder(tf.float32, [1, None, n_output_dim])
 
 # Parameters
 weights = {
-    'out': tf.Variable(tf.random_normal([n_hidden, n_output_dim], seed=1))
+    'out': tf.Variable(tf.truncated_normal([n_hidden, n_output_dim]))
 }
 biases = {
-    'out': tf.Variable(tf.random_normal([n_output_dim], seed=1))
+    'out': tf.Variable(tf.truncated_normal([n_output_dim]))
 }
 
-# RNN-cell
+
 def RNN(x, weights, biases):
-    rnn = tf.contrib.rnn.BasicRNNCell(n_hidden)
-    outputs, states = tf.nn.dynamic_rnn(rnn, x, dtype=tf.float32)
+    cell = tf.contrib.rnn.BasicRNNCell(n_hidden) # Make RNNCell
+    outputs, states = tf.nn.dynamic_rnn(cell, x, time_major=False, dtype=tf.float32)
+    '''
+    **Notes on tf.nn.dynamic_rnn**
+
+    - 'x' can have shape (batch)x(time)x(input_dim), if time_major=False or 
+                         (time)x(batch)x(input_dim), if time_major=True
+    - 'outputs' can have the same shape as 'x'
+                         (batch)x(time)x(input_dim), if time_major=False or 
+                         (time)x(batch)x(input_dim), if time_major=True
+    - 'states' is the final state, determined by batch and hidden_dim
+    '''
+    
+    # outputs[-1] is outputs for the last example in the mini-batch
     return tf.matmul(outputs[-1], weights['out']) + biases['out']
 
+def softmax(x):
+    rowmax = np.max(x, axis=1)
+    x -= rowmax.reshape((x.shape[0] ,1)) # for numerical stability
+    x = np.exp(x)
+    sum_x = np.sum(x, axis=1).reshape((x.shape[0],1))
+    return x / sum_x
 
-pred = RNN(x, weights, biases)
-cost = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(logits=pred, labels=y))
+pred = RNN(x_data, weights, biases)
+cost = tf.reduce_mean(tf.squared_difference(pred, y_data))
 optimizer = tf.train.AdamOptimizer(learning_rate=learning_rate).minimize(cost)
+
 
 # Learning
 with tf.Session() as sess:
     sess.run(tf.global_variables_initializer())
-    train_x = char_input.reshape((1, char_input.shape[0], n_input_dim))
-    train_y = char_output.reshape((1, char_output.shape[0], n_output_dim))
+    x_train = char_input.reshape((1, char_input.shape[0], n_input_dim))
+    y_train = char_output.reshape((1, char_output.shape[0], n_output_dim))
     for i in range(max_iter):
         _, loss, p = sess.run([optimizer, cost, pred],
-                              feed_dict={x: train_x, y: train_y})
+                              feed_dict={x_data: x_train, y_data: y_train})
+        if i is max_iter-1:
+            pred_act = softmax(p)
         pred_out = np.argmax(p, axis=1)
         print('Epoch: {:>4}'.format(i + 1), '/', str(max_iter),
               'Cost: {:4f}'.format(loss), 'Predict:', ''.join([idx_to_char[i] for i in pred_out]))
 
 
-# ### Result:
-# - 대략 23번째 Epoch에서부터 이미 첫번째 단어 (hello)를 제외하고 모두 제대로 예측함
-# - 67번째 Epoch에 이르러서 모든 연쇄를 정확히 예측함
-# - LSTM의 경우보다 예측을 더 빨리 (Epoch 비교시) 잘 해냄 (Cost 비교시)
+# Probability plot
+fig, ax = plt.subplots()
+fig.set_size_inches(15,20)
+plt.title('Input Sequence', y=1.08, fontsize=20)
+plt.xlabel('Probability of Next Character(y) Given Current One(x)', fontsize=25, y=1.5)
+plt.ylabel('Character List', fontsize=20)
+plot = plt.imshow(pred_act.T, cmap=plt.get_cmap('plasma'))
+fig.colorbar(plot, fraction=0.015, pad=0.04)
+plt.xticks(np.arange(len(char_data)-1), list(char_raw)[:-1], fontsize=15)
+plt.yticks(np.arange(len(char_list)), [idx_to_char[i] for i in range(len(char_list))], fontsize=15)
+ax.xaxis.tick_top()
+
+# Annotate
+for i, idx in zip(range(len(pred_out)), pred_out):
+    annotation = idx_to_char[idx]
+    ax.annotate(annotation, xy=(i-0.2, idx+0.2), fontsize=12)
+
+plt.show()
+
