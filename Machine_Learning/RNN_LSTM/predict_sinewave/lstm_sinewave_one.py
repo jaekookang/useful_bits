@@ -53,10 +53,10 @@ def RNN(x, weights, biases):
     '''
     **Notes on tf.nn.dynamic_rnn**
 
-    - 'x' can have shape (batch)x(time)x(input_dim), if time_major=Flase or 
+    - 'x' can have shape (batch)x(time)x(input_dim), if time_major=False or 
                          (time)x(batch)x(input_dim), if time_major=True
     - 'outputs' can have the same shape as 'x'
-                         (batch)x(time)x(input_dim), if time_major=Flase or 
+                         (batch)x(time)x(input_dim), if time_major=False or 
                          (time)x(batch)x(input_dim), if time_major=True
     - 'states' is the final state, determined by batch and hidden_dim
     '''
