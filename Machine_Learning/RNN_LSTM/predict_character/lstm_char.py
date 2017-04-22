@@ -1,3 +1,6 @@
+
+# coding: utf-8
+
 # # Simple Character-level Language Model using LSTM
 # 2017-04-11 jkang  
 # Python3.5  
@@ -18,13 +21,15 @@
 # - dynamic_rnn방식 사용 (기존 tf.nn.rnn보다 더 시간-계산 효율적이라고 함)
 # - AdamOptimizer를 사용
 
+# In[1]:
+
 import tensorflow as tf
 import numpy as np
 import matplotlib.pyplot as plt
 
 # Input/Ouput data
 char_raw = 'hello_world_good_morning_see_you_hello_great'
-char_list = list(set(char_raw))
+char_list = sorted(list(set(char_raw)))
 char_to_idx = {c: i for i, c in enumerate(char_list)}
 idx_to_char = {i: c for i, c in enumerate(char_list)}
 char_data = [char_to_idx[c] for c in char_raw]
@@ -37,9 +42,11 @@ with tf.Session() as sess:
     char_output = char_output.eval()
 
 
+# In[2]:
+
 # Learning parameters
 learning_rate = 0.001
-max_iter = 200
+max_iter = 1000
 
 # Network Parameters
 n_input_dim = char_input.shape[1]
@@ -61,6 +68,9 @@ weights = {
 biases = {
     'out': tf.Variable(tf.truncated_normal([n_output_dim]))
 }
+
+
+# In[3]:
 
 def RNN(x, weights, biases):
     cell = tf.contrib.rnn.BasicLSTMCell(n_hidden, forget_bias=1.0) # Make RNNCell
@@ -91,6 +101,8 @@ cost = tf.reduce_mean(tf.squared_difference(pred, y_data))
 optimizer = tf.train.AdamOptimizer(learning_rate=learning_rate).minimize(cost)
 
 
+# In[4]:
+
 # Learning
 with tf.Session() as sess:
     sess.run(tf.global_variables_initializer())
@@ -99,18 +111,26 @@ with tf.Session() as sess:
     for i in range(max_iter):
         _, loss, p = sess.run([optimizer, cost, pred],
                               feed_dict={x_data: x_train, y_data: y_train})
-        if i is max_iter-1:
+        if i == (max_iter-1):
             pred_act = softmax(p)
-        pred_out = np.argmax(p, axis=1)
-        print('Epoch: {:>4}'.format(i + 1), '/', str(max_iter),
-              'Cost: {:4f}'.format(loss), 'Predict:', ''.join([idx_to_char[i] for i in pred_out]))
+        if (i+1) % 100 == 0:
+            pred_out = np.argmax(p, axis=1)
+            accuracy = np.sum(char_data[1:] == pred_out)/n_output_len*100
+            print('Epoch:{:>4}/{},'.format(i+1,max_iter),
+                  'Cost:{:.4f},'.format(loss), 
+                  'Acc:{:>.1f},'.format(accuracy),
+                  'Predict:', ''.join([idx_to_char[i] for i in pred_out]))
 
+
+# In[5]:
 
 # Probability plot
 fig, ax = plt.subplots()
 fig.set_size_inches(15,20)
 plt.title('Input Sequence', y=1.08, fontsize=20)
-plt.xlabel('Probability of Next Character(y) Given Current One(x)', fontsize=25, y=1.5)
+plt.xlabel('Probability of Next Character(y) Given Current One(x)'+
+           '\n[accuracy={:.1f}]'.format(accuracy), 
+           fontsize=20, y=1.5)
 plt.ylabel('Character List', fontsize=20)
 plot = plt.imshow(pred_act.T, cmap=plt.get_cmap('plasma'))
 fig.colorbar(plot, fraction=0.015, pad=0.04)
