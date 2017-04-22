@@ -11,3 +11,4 @@ CTRL + / | Comment/Uncomment (for the selected area)
 **ESC** + D D | (holding ESC, press twice) Delete the current cell
 **ESC** + R Y | (holding ESC, press R Y) Clear the current cell output
 CTRL + Shift + - | Split cell into two regions on the current cursor
+Shift + m | Combine multiple cells
