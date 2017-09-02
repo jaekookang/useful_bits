@@ -1,5 +1,6 @@
-# ipython cache
 *.ipynb_checkpoints
-~
-# Python cache
+*~
+*#
+*.DS_Store
 __pycache__
+*.pyc

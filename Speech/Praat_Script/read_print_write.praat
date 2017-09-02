@@ -3,7 +3,7 @@
 # 2. Print file names in the info window
 # 3. Write txt file including file names
 #
-# 2017-03-13 jkang
+# 2017-03-13 jk
 
 my_dir$ = "/Users/jaegukang/Desktop/test"
 result$ = my_dir$+"/result.txt"
