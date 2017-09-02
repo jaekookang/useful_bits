@@ -5,7 +5,7 @@
 
 This repository aims to collect useful bits of information/building blocks (e.g. code, tutorial, etc.) for machine learning, speech analysis, Python, TensorFlow, Praat, Matlab and so on.
 
-Since the collections of code and tutorials are primarily written for the purpose of studying on my own, there might be some errors or bugs. It would be appreciated if you let me know any of them (jaekoo.jk@gmail.com).
+Since the collections of code and tutorials are primarily written for the purpose of studying on my own, there might be some errors or bugs. It would be appreciated if you let me know any of them.
 
 This collection will be updated slowly, but steady. Credits go to all the developers/researchers/coder etc that I've referred to.
 
