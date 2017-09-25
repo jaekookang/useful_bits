@@ -8,7 +8,7 @@ Source:
 - http://www.frank-zalkow.de/en/code-snippets/create-audio-spectrograms-with-python.html?i=1
 
 Usage:
-> spec, timevec, freqvec = getlogFFT('test.wav')
+> spec, timevec, freqvec = getFFT('test.wav')
 
 or 
 
@@ -64,13 +64,13 @@ def logscale_spec(spec, sr=44100, factor=20.):
     
     return newspec, freqs
 
-""" Get logFFT 
+""" Get FFT 
 returns
     * ims: decibel transformed spectral features (time x nfft); e.g. 92x512
     * xtime: time vector (size: time in sec); e.g. len=92
     * freq: frequency vector (size: nfft); e.g. len=512
 """
-def getlogFFT(audiopath, binsize=2**10):
+def getFFT(audiopath, binsize=2**10):
     samplerate, samples = wav.read(audiopath)
     s = stft(samples, binsize)
     
@@ -116,4 +116,4 @@ def plotstft(audiopath, binsize=2**10, plotpath=None, colormap="jet"):
     plt.clf()
 
 # plotstft('test.wav')
-# spec, timevec, freqvec = getlogFFT('test.wav')
+# spec, timevec, freqvec = getFFT('test.wav')
