@@ -1,3 +1,17 @@
+''' 
+Extract formant frequencies (F1, F2, F3)
+
+Source:
+- https://github.com/jaekookang/useful_bits/blob/master/Speech/Extract_Formant_using_Praat/Extract_Formants.ipynb
+- https://github.com/mwv/praat_formants_python
+
+Usage:
+get_formant('da_ta.wav', 0.5)
+> array([  688.922,  1116.888,  2542.079])
+
+2017-09-18 jaekoo
+'''
+
 import os
 import numpy as np
 from subprocess import Popen, PIPE

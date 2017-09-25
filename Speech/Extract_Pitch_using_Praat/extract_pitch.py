@@ -1,3 +1,15 @@
+'''
+Extract pitch (F0)
+
+Source:
+- https://github.com/jaekookang/useful_bits/blob/master/Speech/Extract_Pitch_using_Praat/Extract_Pitch.ipynb
+
+Usage:
+get_formant('da_ta.wav', 0.5)
+> 118.177
+
+'''
+
 import os
 import numpy as np
 from subprocess import Popen, PIPE

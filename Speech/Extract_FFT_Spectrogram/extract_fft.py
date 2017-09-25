@@ -1,11 +1,20 @@
 #coding: utf-8
-""" 
+'''
 This work is licensed under a Creative Commons Attribution 3.0 Unported License.
 2012-2013; Frank Zalkow
 2017-09-24 edited by jk
 
-http://www.frank-zalkow.de/en/code-snippets/create-audio-spectrograms-with-python.html?i=1
-"""
+Source:
+- http://www.frank-zalkow.de/en/code-snippets/create-audio-spectrograms-with-python.html?i=1
+
+Usage:
+> spec, timevec, freqvec = getlogFFT('test.wav')
+
+or 
+
+> plotstft('test.wav')
+
+'''
 
 import numpy as np
 from matplotlib import pyplot as plt
@@ -106,5 +115,5 @@ def plotstft(audiopath, binsize=2**10, plotpath=None, colormap="jet"):
         
     plt.clf()
 
-# plotstft("test.wav")
-# f, t, q = getlogFFT('test.wav')
+# plotstft('test.wav')
+# spec, timevec, freqvec = getlogFFT('test.wav')
