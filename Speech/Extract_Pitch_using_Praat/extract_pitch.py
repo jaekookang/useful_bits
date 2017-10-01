@@ -62,5 +62,5 @@ def get_pitch(FNAME, TIMEAT, TIMESTEP=0.0, FLOOR=75.0, CEILING=600.0):
         val = float('{:.3f}'.format(float(outstr[0])))
     return val
 
-time = 0.5 # sec
-get_pitch('da_ta.wav', time) # output: F0
+# time = 0.5 # sec
+# get_pitch('da_ta.wav', time) # output: F0
