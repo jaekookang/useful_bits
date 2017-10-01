@@ -5,7 +5,7 @@ Source:
 - https://github.com/jaekookang/useful_bits/blob/master/Speech/Extract_Pitch_using_Praat/Extract_Pitch.ipynb
 
 Usage:
-get_formant('da_ta.wav', 0.5)
+get_pitch('da_ta.wav', 0.5)
 > 118.177
 
 '''
@@ -47,14 +47,12 @@ def run_praat_cmd(*args):
         return stdout
         
 def get_pitch(FNAME, TIMEAT, TIMESTEP=0.0, FLOOR=75.0, CEILING=600.0):
-    fmt_out = {}
     def _float(s):
         # Retrieved from https://github.com/mwv/praat_formants_python
         try:
             return float(s)
         except ValueError:
             return np.nan
-    key = (FNAME, TIMEAT, TIMESTEP, FLOOR, CEILING)
     out = run_praat_cmd(gen_script(), FNAME, TIMEAT, TIMESTEP, FLOOR, CEILING)
     outstr = str(out, 'utf-8').split()
     if len(outstr) < 2:
@@ -64,5 +62,5 @@ def get_pitch(FNAME, TIMEAT, TIMESTEP=0.0, FLOOR=75.0, CEILING=600.0):
         val = float('{:.3f}'.format(float(outstr[0])))
     return val
 
-# time = 0.5 # sec
-# get_pitch('da_ta.wav', time) # output: F0
+time = 0.5 # sec
+get_pitch('da_ta.wav', time) # output: F0
