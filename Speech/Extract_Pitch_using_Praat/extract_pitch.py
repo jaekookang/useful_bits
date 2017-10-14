@@ -13,9 +13,12 @@ get_pitch('da_ta.wav', 0.5)
 import os
 import numpy as np
 from subprocess import Popen, PIPE
+from sys import platform
 import pdb
 
 tmp_script = 'tmp.praat'
+
+
 def gen_script():
     # This generates temporary praat script file
     global tmp_script
@@ -34,18 +37,25 @@ Get value at time... 'TIMEAT' Hertz Linear
 exit
 ''')
     return tmp_script
-        
+
+
 def run_praat_cmd(*args):
-    o = Popen(['praat'] + [str(i) for i in args],
-             shell=False, stdout=PIPE, stderr=PIPE)
+    # Check operating system
+    if platform == 'darwin':  # macOS
+        o = Popen(['praat'] + [str(i) for i in args],
+                  shell=False, stdout=PIPE, stderr=PIPE)
+    else:  # Linux
+        o = Popen(['praat', '--run'] + [str(i) for i in args],
+                  shell=False, stdout=PIPE, stderr=PIPE)
     stdout, stderr = o.communicate()
-    if os.path.exists(tmp_script): 
+    if os.path.exists(tmp_script):
         os.remove(tmp_script)
     if o.returncode:
         raise Exception(stderr.decode('utf-8'))
     else:
         return stdout
-        
+
+
 def get_pitch(FNAME, TIMEAT, TIMESTEP=0.0, FLOOR=75.0, CEILING=600.0):
     def _float(s):
         # Retrieved from https://github.com/mwv/praat_formants_python
@@ -57,10 +67,11 @@ def get_pitch(FNAME, TIMEAT, TIMESTEP=0.0, FLOOR=75.0, CEILING=600.0):
     outstr = str(out, 'utf-8').split()
     if len(outstr) < 2:
         print('--undefined--')
-        val = 0.0 # pad nan as 0
+        val = 0.0  # pad nan as 0
     else:
         val = float('{:.3f}'.format(float(outstr[0])))
     return val
 
-# time = 0.5 # sec
-# get_pitch('da_ta.wav', time) # output: F0
+
+# time = 0.5  # sec
+# get_pitch('da_ta.wav', time)  # output: F0
