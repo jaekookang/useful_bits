@@ -7,7 +7,7 @@ This repository aims to collect useful bits of information/building blocks (e.g.
 
 Since the collections of code and tutorials are primarily written for the purpose of studying on my own, there might be some errors or bugs. It would be appreciated if you let me know any of them.
 
-This collection will be updated slowly, but steady. Credits go to all the developers/researchers/coder etc that I've referred to.
+This collection will be updated slowly, but steadily. Credits go to all the developers/researchers/coders etc. that I've referred to.
 
 #### [Machine Learning](https://github.com/jaekookang/useful_bits/tree/master/Machine_Learning)  
 * [Gradient Descent](https://github.com/jaekookang/useful_bits/tree/master/Machine_Learning/Gradient_Descent): Basic Gradient Descent algorithm and its implementation using Matlab  
