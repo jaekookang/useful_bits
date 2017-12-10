@@ -13,12 +13,12 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;
 
 
-;; System:melpa (Milkypostman’ Emacs Lisp Package Archive)
 (require 'package)
-(add-to-list
- 'package-archives
- '("melpa" . "http://melpa.milkbox.net/packages/")
-    t)
+(add-to-list 'package-archives
+             '("melpa-stable" . "https://stable.melpa.org/packages/"))
+(package-initialize)
+(when (not package-archive-contents)
+    (package-refresh-contents))
 
 ;; Display:see lines
 (global-linum-mode 1)
@@ -43,8 +43,14 @@
       (setq linum-format 'linum-format-func))
 
 ;; System: copy to clipboard
-(setq x-select-enable-clipboard t)
-(setq interprogram-paste-function 'x-cut-buffer-or-selection-value)
+;; (setq x-select-enable-clipboard t)
+;; (setq interprogram-paste-function 'x-cut-buffer-or-selection-value)
+(setq interprogram-cut-function
+      (lambda (text &optional push)
+    (let* ((process-connection-type nil)
+           (pbproxy (start-process "pbcopy" "pbcopy" "/usr/bin/pbcopy")))
+      (process-send-string pbproxy text)
+      (process-send-eof pbproxy))))
 
 
 ;; System: enable mouse support
@@ -105,13 +111,21 @@
 ;;; Python Settings ;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;
 
-;; For python environment in Emacs,
-;; install elpy from https://github.com/jorgenschaefer/elpy
-;; e.g. pip install jedi flake8 importmagic autopep8
-(package-initialize)
+(defvar myPackages
+  '(better-defaults
+    ein
+    elpy
+    flycheck
+    material-theme
+    py-autopep8)) ;; add the autopep8 package
 (elpy-enable)
 
+;; Syntax checking
+(when (require 'flycheck nil t)
+  (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
+  (add-hook 'elpy-mode-hook 'flycheck-mode))
+
 ;; py-autopep8
-;; (require 'py-autopep8)
-(add-hook 'python-mode-hook 'py-autopep8-enable-on-save)
+(require 'py-autopep8)
+(add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save)
 ```
