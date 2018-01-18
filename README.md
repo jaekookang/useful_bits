@@ -20,7 +20,9 @@ This collection will be updated slowly, but steadily. Credits go to all the deve
 * [Github](https://github.com/jaekookang/useful_bits/tree/master/Programming/ENV_Github): Useful commands and notes for Github
 * [Jupyter](https://github.com/jaekookang/useful_bits/tree/master/Programming/ENV_Jupyter): Useful options and settings for Jupyter environment
 <!--* [Matlab](https://github.com/jaekookang/useful_bits/tree/master/Programming/LANG_Matlab): Matlab code for essential operations (<span style="color:red">_coming soon_</span>)-->
-* [Python](https://github.com/jaekookang/useful_bits/tree/master/Programming/LANG_Python): Python code and tutorial; tips and essential code (<span style="color:red">_coming soon_</span>)
+* [Python](https://github.com/jaekookang/useful_bits/tree/master/Programming/LANG_Python): Python code and tutorial; tips and essential code
+	* Threading
+	* Queue
 * [Tensorflow](https://github.com/jaekookang/useful_bits/tree/master/Programming/ML_Tensorflow): Tips and notes for machine learning implementation using Tensorflow
 
 
@@ -28,5 +30,5 @@ This collection will be updated slowly, but steadily. Credits go to all the deve
 * [Control_Praat](https://github.com/jaekookang/useful_bits/tree/master/Speech/Control_Praat): Control Praat using Python
 * [Extract_MFCC](https://github.com/jaekookang/useful_bits/tree/master/Speech/Extract_MFCC): Extract MFCC features using Python
 * [Praat_Script](): Useful tips/tutorial for Praat scripting
-* [Read_TextGrid](https://github.com/jaekookang/useful_bits/tree/master/Speech/Read_TextGrid): Read TextGrid in Python using [repo @kylebgorman](https://github.com/kylebgorman/textgrid)
+* [Read_TextGrid](https://github.com/jaekookang/useful_bits/tree/master/Speech/Read_TextGrid): Read TextGrid in Python
 * [Read_Write](https://github.com/jaekookang/useful_bits/tree/master/Speech/Read_Write): Read and Write sound file to Python
