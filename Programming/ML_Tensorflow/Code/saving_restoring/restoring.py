@@ -8,6 +8,7 @@
 # - https://github.com/maestrojeong/tensorflow_basic
 
 import tensorflow as tf
+from tensorflow.python.tools.inspect_checkpoint import print_tensors_in_checkpoint_file
 import os
 
 
@@ -33,9 +34,14 @@ with tf.Session() as sess:
     sess.run(init)
     saver.restore(sess, saved_data) # Load
 
-    # Check variables
+    # Check variables method1:
     for v in tf.global_variables():
         print(v.name)
+
+    # or method2:
+    print_tensors_in_checkpoint_file(
+        saved_data, tensor_name='', all_tensors=False, all_tensor_names=True)
+
     var1_restored = graph.get_tensor_by_name('var1:0')
     var2_restored = graph.get_tensor_by_name('var2:0')
     var3_restored = graph.get_tensor_by_name('add:0') # var3 is not a variable
