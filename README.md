@@ -5,7 +5,7 @@
 
 This repository aims to collect useful bits of information/building blocks (e.g. code, tutorial, etc.) for machine learning, speech analysis, Python, TensorFlow, Praat, Matlab and so on.
 
-Since the collections of code and tutorials are primarily written for the purpose of studying on my own, there might be some errors or bugs. It would be appreciated if you let me know any of them.
+Since the collections of code and tutorials are primarily written for the purpose of studying on my own, there might be some errors or bugs. It would be appreciated if you let me know about any of them.
 
 This collection will be updated slowly, but steadily. Credits go to all the developers/researchers/coders that I've referred to.
 
@@ -30,5 +30,8 @@ This collection will be updated slowly, but steadily. Credits go to all the deve
 * [Control_Praat](https://github.com/jaekookang/useful_bits/tree/master/Speech/Control_Praat): Control Praat using Python
 * [Extract_MFCC](https://github.com/jaekookang/useful_bits/tree/master/Speech/Extract_MFCC): Extract MFCC features using Python
 * [Praat_Script](): Useful tips/tutorial for Praat scripting
+<!---
+TODO: Add link for "[Praat_Script](): Useful tips/tutorial for Praat scripting"
+-->
 * [Read_TextGrid](https://github.com/jaekookang/useful_bits/tree/master/Speech/Read_TextGrid): Read TextGrid in Python
-* [Read_Write](https://github.com/jaekookang/useful_bits/tree/master/Speech/Read_Write): Read and Write sound file to Python
+* [Read_Write](https://github.com/jaekookang/useful_bits/tree/master/Speech/Read_Write): Read and Write a sound file using Python
