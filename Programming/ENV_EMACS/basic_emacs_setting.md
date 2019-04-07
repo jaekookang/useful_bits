@@ -114,6 +114,10 @@
 ;;; Python Settings ;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;
 
+;; For python environment in Emacs,
+;; First, install elpy from https://github.com/jorgenschaefer/elpy
+;; and then, pip install jedi flake8 importmagic autopep8
+
 (defvar myPackages
   '(better-defaults
     ein
