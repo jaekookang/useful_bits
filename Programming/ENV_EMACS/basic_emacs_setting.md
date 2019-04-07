@@ -15,7 +15,7 @@
 
 (require 'package)
 (add-to-list 'package-archives
-             '("melpa-stable" . "https://stable.melpa.org/packages/"))
+             '("melpa-stable" . "http://melpa.org/packages"))
 (package-initialize)
 (when (not package-archive-contents)
     (package-refresh-contents))
