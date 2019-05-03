@@ -11,7 +11,7 @@ This collection will be updated slowly, but steadily. Credits go to all the deve
 
 #### [Machine Learning](https://github.com/jaekookang/useful_bits/tree/master/Machine_Learning)  
 * [Gradient Descent](https://github.com/jaekookang/useful_bits/tree/master/Machine_Learning/Gradient_Descent): Basic Gradient Descent algorithm and its implementation using Matlab  
-* [Linear Regression](https://github.com/jaekookang/useful_bits/tree/master/Machine_Learning/Linear_Regression): Linear regression example using Tensorflow on Python (e.g. predicting the number of theft from the number of fire in the city)
+* [Linear Regression](https://github.com/jaekookang/useful_bits/tree/master/Machine_Learning/Linear_Regression): Linear regression example using Tensorflow on Python (e.g. predicting the number of thefts from the number of fire in the city)
 * [Logistic Regression](https://github.com/jaekookang/useful_bits/tree/master/Machine_Learning/Logistic_Regression): Logistic regression example using Tensorflow on Python (e.g. Iris type classification)
 * [Multilayer Perceptron (ANN)](https://github.com/jaekookang/useful_bits/tree/master/Machine_Learning/Multilayer_Perceptron): Example of multilayer perceptron (Vanila Neural Network) code
 * [RNN-LSTM](https://github.com/jaekookang/useful_bits/tree/master/Machine_Learning/RNN_LSTM): RNN, LSTM based code examples; e.g. simple character-level language modeling, sinewave predictor, etc.
