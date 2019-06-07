@@ -26,3 +26,4 @@
 
 ### Using brew cask
 - Follow steps described in [https://wikemacs.org/wiki/Installing_Emacs_on_OS_X](https://wikemacs.org/wiki/Installing_Emacs_on_OS_X).
+- After installation, add `alias emacs="/Applications/Emacs.app/Contents/MacOS/Emacs -nw"` to .bashrc
