@@ -11,6 +11,7 @@
     + $`sudo apt-get install tree`
 
 ## Install emacs
+### Install binary
 - Downloa emacs (25.3) from http://gnu.askapache.com/emacs/
 - Install emacs
     + $`./configure`
@@ -22,3 +23,6 @@
     + $`make install` (or `sudo make install` if a root permission is required)
     + $`make clean`
     + $`make distclean`
+
+### Using brew cask
+- Follow steps described in [https://wikemacs.org/wiki/Installing_Emacs_on_OS_X](https://wikemacs.org/wiki/Installing_Emacs_on_OS_X).
